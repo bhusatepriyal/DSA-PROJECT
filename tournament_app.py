@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd
 from collections import deque
 import math
-import graphviz # <--- ADDED THIS IMPORT
+try:
+    import graphviz
+    HAS_GRAPHVIZ = True
+except ImportError:
+    HAS_GRAPHVIZ = False
 
 # --- C Structs -> Python Classes ---
 # This is a literal translation of your C structs into Python classes.
@@ -1188,4 +1192,5 @@ elif page == "6. (Debug) View State":
         else:
             debug_state[k] = v
             
+
     st.json(debug_state)
